@@ -36,7 +36,7 @@ def median_filter(img, filtered_img, kernel_size):
     return filtered_img
 
 # Execution
-# lire l'image
+# lire l'image 
 image = cv2.imread('univer.jpg')
 
 # Spécifier la taille du noyau
