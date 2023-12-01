@@ -1,7 +1,8 @@
 import cv2
  
-def mean_filter(img, filtered_img, kernel_size):
+def mean_filter(img, kernel_size):
     rows, cols, channels = img.shape
+    filtered_img = img.copy()
 
     half_kernel = kernel_size // 2
 
@@ -10,7 +11,7 @@ def mean_filter(img, filtered_img, kernel_size):
         j = half_kernel
         while j < cols - half_kernel:
             k = 0
-            while k < channels:
+            while k < channels: # traiter le cas des image GRAYSCALE ou COLOR
                 # Calculer la moyenne dans la fenêtre du noyau
                 sum_pixels = 0
                 m = -half_kernel
@@ -34,13 +35,13 @@ def mean_filter(img, filtered_img, kernel_size):
 
 # Execution
 # lire l'image
-image = cv2.imread('univer.jpg')
+image = cv2.imread('noisy.jpg')
 
 # Spécifier la taille du noyau
 kernel_size = 5
 
 # Appliquer le filtre moyen
-filtered_image = mean_filter(image, image, kernel_size)
+filtered_image = mean_filter(image, kernel_size)
 
 # Afficher l'image originale et l'image filtrée
 cv2.imshow('Image Originale', image)

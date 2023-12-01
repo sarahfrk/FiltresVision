@@ -1,7 +1,8 @@
 import cv2
 
-def median_filter(img, filtered_img, kernel_size):
+def median_filter(img, kernel_size):
     rows, cols, channels = img.shape
+    filtered_img = img.copy()
 
     half_kernel = kernel_size // 2
 
@@ -10,7 +11,7 @@ def median_filter(img, filtered_img, kernel_size):
         j = half_kernel
         while j < cols - half_kernel:
             k = 0
-            while k < channels:
+            while k < channels:   # traiter le cas des image GRAYSCALE ou COLOR
                 # Collecter les valeurs des pixels dans la fenêtre du noyau
                 values = []
                 m = -half_kernel
@@ -37,7 +38,7 @@ def median_filter(img, filtered_img, kernel_size):
 
 # Execution
 # lire l'image 
-image = cv2.imread('univer.jpg')
+image = cv2.imread('noisy.jpg')
 
 # Spécifier la taille du noyau
 kernel_size = 5
