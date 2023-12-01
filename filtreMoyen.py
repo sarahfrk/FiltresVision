@@ -1,5 +1,5 @@
 import cv2
-
+ 
 def mean_filter(img, filtered_img, kernel_size):
     rows, cols, channels = img.shape
 
